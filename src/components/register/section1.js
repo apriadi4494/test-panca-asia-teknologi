@@ -89,7 +89,9 @@ function Section1(props) {
       </div>
       <div className="flex w-full gap-2 justify-center mt-5">
         <span>Already have an account?</span>
-        <span className="text-green-600">Login</span>
+        <Link href="/login">
+          <span className="text-green-600">Login</span>
+        </Link>
       </div>
 
       <div className="mt-5">
