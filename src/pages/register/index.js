@@ -1,12 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable import/order */
 /* eslint-disable import/extensions */
-import { useEffect, useState } from 'react';
 import { ENGLISH, INDONESIA } from '@/commons/fixtures/label';
-import BoxLogin from '@/components/login/boxLogin';
-import BoxImage from '@/components/login/boxImage';
+import { useEffect, useState } from 'react';
+import LeftPannel from '@/components/register/leftPannel';
 
-function Login() {
+function Register() {
   const [language, setLanguage] = useState('eng');
   const [label, setLabel] = useState(ENGLISH);
 
@@ -16,11 +15,11 @@ function Login() {
   }, [language]);
 
   return (
-    <div className="p-5">
-      <BoxImage language={language} setLanguage={setLanguage} />
-      <BoxLogin label={label} />
+    <div className="grid grid-cols-2 w-full">
+      {/* LEFT PANNEL */}
+      <LeftPannel label={label} />
     </div>
   );
 }
 
-export default Login;
+export default Register;

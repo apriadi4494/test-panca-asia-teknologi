@@ -33,7 +33,7 @@ function BoxLogin(props) {
           <div className="p-5">
             <div className="mb-5">
               <p className="font-semibold" style={{ color: '#23A455', fontSize: 30.8 }}>
-                {label.LOGIN}
+                {label.LOGIN.LOGIN}
               </p>
             </div>
             {/* BUTTON LOGIN SSO */}
@@ -51,19 +51,19 @@ function BoxLogin(props) {
             {/* DIVIDER */}
             <div className="relative flex py-5 items-center">
               <div className="flex-grow border-t border-gray-200" />
-              <span className="flex-shrink mx-4 text-gray-400">{label.OR}</span>
+              <span className="flex-shrink mx-4 text-gray-400">{label.LOGIN.OR}</span>
               <div className="flex-grow border-t border-gray-200" />
             </div>
 
             {/* FORM */}
             <div>
-              <FormInput type="text" label={label.EMAIL} image="/images/mail.png" placeholder={label.EMAIL_PLACEHOLDER} />
+              <FormInput type="text" label={label.LOGIN.EMAIL} image="/images/mail.png" placeholder={label.LOGIN.EMAIL_PLACEHOLDER} />
               <FormInput
                 type={isVisiblePassword ? 'text' : 'password'}
-                label={label.PASSWORD}
+                label={label.LOGIN.PASSWORD}
                 image="/images/keys.svg"
                 lastIcon="/images/eye.png"
-                placeholder={label.PASSOWRD_PLACEHOLDER}
+                placeholder={label.LOGIN.PASSOWRD_PLACEHOLDER}
                 changeType={changeType}
               />
             </div>
@@ -75,12 +75,12 @@ function BoxLogin(props) {
                   <input type="checkbox" className="bg-white focus:ring-transparent" style={{ width: 21, height: 21 }} />
                 </div>
                 <div>
-                  <p style={{ color: '#666666', fontSize: 14 }}>{label.REMEMBER_ME}</p>
+                  <p style={{ color: '#666666', fontSize: 14 }}>{label.LOGIN.REMEMBER_ME}</p>
                 </div>
               </div>
               <div>
                 <p className="text-right" style={{ color: '#666666', fontSize: 14 }}>
-                  {label.FORGOT_PASSWORD}
+                  {label.LOGIN.FORGOT_PASSWORD}
                 </p>
               </div>
             </div>
@@ -89,7 +89,7 @@ function BoxLogin(props) {
             <div className="mt-10">
               <button type="button" className="bg-green-600 rounded-md w-full p-3">
                 <p className="text-white" style={{ fontSize: 16.8 }}>
-                  {label.LOGIN}
+                  {label.LOGIN.LOGIN}
                 </p>
               </button>
             </div>
@@ -97,9 +97,9 @@ function BoxLogin(props) {
             {/* QUESTION IS HAVE ACCOUNT */}
             <div className="mt-2">
               <div className="flex justify-center gap-2" style={{ fontSize: 15.4 }}>
-                <span>{label.ACCOUNT_QUESTION}</span>
+                <span>{label.LOGIN.ACCOUNT_QUESTION}</span>
                 <Link href="/register">
-                  <span className="text-green-500">{label.PLEASE_SIGNUP}</span>
+                  <span className="text-green-500">{label.LOGIN.PLEASE_SIGNUP}</span>
                 </Link>
               </div>
             </div>
