@@ -94,10 +94,10 @@ function Section1(props) {
 
       <div className="mt-5">
         <div className="flex gap-4 justify-center">
-          <div>
+          <div className="cursor-pointer duration-700 hover:scale-105">
             <Image src="/images/appstore.png" width={154} height={54} />
           </div>
-          <div>
+          <div className="cursor-pointer duration-700 hover:scale-105">
             <Image src="/images/googleplay.png" width={187} height={55} />
           </div>
         </div>
