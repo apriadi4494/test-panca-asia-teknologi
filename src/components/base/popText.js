@@ -30,7 +30,7 @@ function PopText(props) {
           </div>
         </div>
       )}
-      <div className="absolute right-0 pr-7">
+      <div className="absolute right-0 pr-7" style={{ marginTop: section > 3 ? 35 : 0 }}>
         <Dropdown value={language} options={languages} onChange={(e) => setLanguage(e.value)} placeholder="Select a City" />
       </div>
     </div>

@@ -9,6 +9,7 @@ import Section1 from '@/components/register/section1';
 import Section3 from '@/components/register/section3';
 import Image from 'next/image';
 import PopText from '@/components/base/popText';
+import Section4 from '@/components/register/section4';
 
 function Register() {
   const [language, setLanguage] = useState('eng');
@@ -31,8 +32,9 @@ function Register() {
         {section === 1 && <Section1 language={language} setLanguage={setLanguage} setSection={setSection} />}
         {section === 2 && <Section2 setSection={setSection} />}
         {section === 3 && <Section3 setSection={setSection} />}
+        {section === 4 && <Section4 setSection={setSection} />}
 
-        {section !== 1 && (
+        {section !== 1 && section < 4 && (
           <div>
             <div className="bottom-0">
               {' '}
