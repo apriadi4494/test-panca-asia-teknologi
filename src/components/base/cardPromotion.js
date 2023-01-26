@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Image from 'next/image';
 import React from 'react';
 import ListComponentRegister from './list-component-register';
 
 const cardPromotion = (props) => {
-  const { isComplete, borderColor, bgColor, textColor } = props;
+  const { isComplete, borderColor, bgColor, textColor, setChoose, index } = props;
 
   return (
-    <div>
+    <div className="cursor-pointer transition-all duration-500 hover:scale-105" onClick={() => setChoose(index)} style={{ zIndex: 9999 }}>
       {isComplete && (
         <div className={`${bgColor} h-10 rounded-t-md grid items-center`} style={{ width: 330 }}>
           <p className="text-white font-semibold text-center" style={{ fontSize: 15 }}>

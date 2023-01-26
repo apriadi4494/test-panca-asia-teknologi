@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import axios from 'axios';
@@ -10,13 +11,14 @@ export const RegisterContext = createContext();
 export function RegisterProvider({ children }) {
   const [formFinal, setFormFinal] = useState({
     user_id: '',
-    package_id: '1',
+    package_id: '2',
     payment_id: '1',
   });
   const [countries, setContries] = useState([]);
   const [country, setCountry] = useState('');
   const [section, setSection] = useState(1);
   const [loadingButton, setLoadingButton] = useState(false);
+  const [aggree, setAggre] = useState(false);
   const [form, setForm] = useState({
     firstname: '',
     lastname: '',
@@ -32,7 +34,6 @@ export function RegisterProvider({ children }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  console.log(formFinal)
   const getContries = async () => {
     await axios({
       method: 'get',
@@ -50,6 +51,14 @@ export function RegisterProvider({ children }) {
   };
 
   const register = async () => {
+    if (!aggree) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Aggreement',
+        text: 'you have to aggree with term and condition',
+      });
+      return true;
+    }
     setLoadingButton(true);
     await axios({
       method: 'post',
@@ -61,11 +70,6 @@ export function RegisterProvider({ children }) {
     })
       .then((res) => {
         setFormFinal({ ...formFinal, user_id: res.data.data.id.toString() });
-        Swal.fire({
-          icon: 'success',
-          title: 'Success Register Mamber',
-          text: 'you have success register',
-        });
         setSection(2);
       })
       .catch((err) => {
@@ -90,13 +94,13 @@ export function RegisterProvider({ children }) {
         Accept: 'application/json',
       },
     })
-      .then((res) => {
+      .then(() => {
         Swal.fire({
           icon: 'success',
           title: 'Success Register',
           text: 'you have success register',
         });
-        setSection(2);
+        setSection(4);
       })
       .catch((err) => {
         if (err.response.data.message.error) {
@@ -114,7 +118,7 @@ export function RegisterProvider({ children }) {
     getContries();
   }, []);
 
-  const registerState = { countries, form, onChange, country, setCountry, register, section, setSection, loadingButton, registerFinal };
+  const registerState = { countries, form, onChange, country, setCountry, register, section, setSection, loadingButton, registerFinal, aggree, setAggre };
 
   return <RegisterContext.Provider value={registerState}>{children}</RegisterContext.Provider>;
 }

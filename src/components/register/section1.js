@@ -12,7 +12,7 @@ import { AuthContext } from '@/providers/authProvider';
 
 function Section1() {
   const { language, setLanguage, label } = useContext(AuthContext);
-  const { countries, form, onChange, country, setCountry, register, loadingButton } = useContext(RegisterContext);
+  const { countries, form, onChange, country, setCountry, register, loadingButton, aggree, setAggre } = useContext(RegisterContext);
   const [seePassword, setSeePassowrd] = useState(false);
   const [seePasswordConfirmation, setSeePassowrdConfirmation] = useState(false);
 
@@ -99,7 +99,7 @@ function Section1() {
       <div className="mt-8 w-full">
         <div className="flex">
           <div className="mr-5">
-            <input type="checkbox" className="bg-white focus:ring-transparent" style={{ width: 30, height: 30 }} />
+            <input type="checkbox" checked={aggree} onChange={() => setAggre(!aggree)} className="bg-white focus:ring-transparent" style={{ width: 30, height: 30 }} />
           </div>
           <div className="grid items-center">
             <p style={{ color: '#666666', fontSize: 14 }}>

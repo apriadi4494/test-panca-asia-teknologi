@@ -13,7 +13,7 @@ import Section4 from './section4';
 
 export function RegisterContent() {
   const { label, language, setLanguage } = useContext(AuthContext);
-  const { section, setSection } = useContext(RegisterContext);
+  const { section, setSection, registerFinal } = useContext(RegisterContext);
 
   return (
     <div className="grid lg:grid-cols-7 w-full h-screen">
@@ -34,11 +34,27 @@ export function RegisterContent() {
               {' '}
               <div className="mt-5 px-5">
                 <div className="grid grid-cols-2 w-full">
-                  <button onClick={() => setSection(section - 1)} type="button" className="flex w-full justify-end gap-5 py-3 rounded-l-lg bg-gray-50 border duration-500 hover:bg-gray-200">
+                  <button
+                    onClick={() => {
+                      setSection(section - 1);
+                    }}
+                    type="button"
+                    className="flex w-full justify-end gap-5 py-3 rounded-l-lg bg-gray-50 border duration-500 hover:bg-gray-200"
+                  >
                     <Image src="/images/arrow-left-gray.svg" alt="arrow-right" width={14} height={16} />
                     <p className="mr-5 font-bold">SEBELUMNYA</p>
                   </button>
-                  <button onClick={() => setSection(section + 1)} type="button" className="flex w-full gap-5 py-3 rounded-r-lg bg-blue-500 border duration-500 hover:bg-blue-700">
+                  <button
+                    onClick={() => {
+                      if (section === 3) {
+                        registerFinal();
+                      } else {
+                        setSection(section + 1);
+                      }
+                    }}
+                    type="button"
+                    className="flex w-full gap-5 py-3 rounded-r-lg bg-blue-500 border duration-500 hover:bg-blue-700"
+                  >
                     <p className="ml-5 text-white font-bold">SELANJUTNYA</p>
                     <Image className="mr-5" src="/images/arrow-right.svg" alt="arrow-left" width={14} height={16} />
                   </button>
