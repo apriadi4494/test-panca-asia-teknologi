@@ -83,7 +83,7 @@ function Section1(props) {
         </div>
       </div>
       <div className="mt-8 w-full">
-        <button type="button" onClick={() => setSection('section2')} className="bg-gray-200 rounded-md w-full p-3" style={{ height: 60 }}>
+        <button type="button" onClick={() => setSection(2)} className="bg-gray-200 rounded-md w-full p-3" style={{ height: 60 }}>
           Create an account
         </button>
       </div>
