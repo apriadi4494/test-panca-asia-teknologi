@@ -6,7 +6,7 @@ function LeftPannel(props) {
   const { label } = props;
 
   return (
-    <div className="p-10 px-20 h-screen" style={{ backgroundColor: '#E8EAF2' }}>
+    <div className="p-10 px-20 h-full" style={{ backgroundColor: '#E8EAF2' }}>
       <div>
         <Image src="/images/logo.png" width={219.1} height={63.5} />
       </div>

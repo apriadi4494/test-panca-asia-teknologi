@@ -8,3 +8,16 @@
 body {
     font-family: 'Lustria', serif;
 }
+
+.custom_pannel.p-dropdown {
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+    border: none;
+}
+
+.p-dropdown-label {
+    --tw-placeholder-opacity: 1!important;
+    color: rgb(156 163 175 / var(--tw-placeholder-opacity))!important;
+    font-family: 'Lustria', serif;
+}

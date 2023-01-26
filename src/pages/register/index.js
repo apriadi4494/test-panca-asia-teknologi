@@ -4,6 +4,7 @@
 import { ENGLISH, INDONESIA } from '@/commons/fixtures/label';
 import { useEffect, useState } from 'react';
 import LeftPannel from '@/components/register/leftPannel';
+import RightPannel from '@/components/register/rightPannel';
 
 function Register() {
   const [language, setLanguage] = useState('eng');
@@ -18,6 +19,7 @@ function Register() {
     <div className="grid grid-cols-2 w-full">
       {/* LEFT PANNEL */}
       <LeftPannel label={label} />
+      <RightPannel language={language} setLanguage={setLanguage} />
     </div>
   );
 }
