@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import FormInput from './formInput';
 
@@ -97,7 +98,9 @@ function BoxLogin(props) {
             <div className="mt-2">
               <div className="flex justify-center gap-2" style={{ fontSize: 15.4 }}>
                 <span>{label.ACCOUNT_QUESTION}</span>
-                <span className="text-green-500">{label.PLEASE_SIGNUP}</span>
+                <Link href="/register">
+                  <span className="text-green-500">{label.PLEASE_SIGNUP}</span>
+                </Link>
               </div>
             </div>
           </div>
