@@ -53,9 +53,9 @@ export const INDONESIA = {
     PLEASE_SIGNUP: 'Daftar sekarang gratis',
   },
   REGISTER: {
-    TEXT_ONE: 'What does your free trial include?',
-    TEXT_TWO: 'For 7 days, you get access to BLAZINGWA’s Sandbox Account.',
-    TEXT_THREE: 'This means that you can use any active WhatsApp number to learn all about BLAZINGWA’s exciting features like:',
+    TEXT_ONE: 'Apa yang termasuk uji coba gratis Anda?',
+    TEXT_TWO: 'Selama 7 hari, Anda mendapatkan akses ke Akun Sandbox BLAZINGWA.',
+    TEXT_THREE: 'Ini berarti Anda dapat menggunakan nomor WhatsApp aktif apa pun untuk mempelajari semua fitur menarik BLAZINGWA seperti:',
     LIST_1: {
       LIST_1: 'Multi-Agent Inbox & Support Dashboard overview',
       LIST_2: 'WhatsApp Broadcast (to your own number)',

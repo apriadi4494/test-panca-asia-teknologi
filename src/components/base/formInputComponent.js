@@ -3,7 +3,7 @@ import React from 'react';
 
 // eslint-disable-next-line react/function-component-definition
 const FormInputComponent = (props) => {
-  const { type, label, placeholder, required = false, icon, lastIcon, changeType } = props;
+  const { value, onChange, name, type, label, placeholder, required = false, icon, lastIcon, changeType } = props;
   return (
     <div className="w-full mt-5">
       <p className="font-semibold" style={{ fontSize: 15.4, color: '#666666' }}>
@@ -17,6 +17,9 @@ const FormInputComponent = (props) => {
         )}
         <div className="flex bg-gray-100 w-full rounded-md h-12 p-2">
           <input
+            name={name}
+            value={value}
+            onChange={onChange}
             type={type}
             placeholder={placeholder}
             className="bg-gray-100 w-full h-full text-gray-600 ml-2 placeholder-gray-400 outline-none text-sm flex-1 border-transparent focus:border-transparent focus:ring-0"

@@ -1,25 +1,20 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import Image from 'next/image';
 import Link from 'next/link';
 import { languages } from '@/commons/fixtures/languages';
 import FormInputComponent from '../base/formInputComponent';
+import { RegisterContext } from '@/providers/registerProvider';
+import { AuthContext } from '@/providers/authProvider';
 
-const contries = [
-  { label: 'New York', value: 'NY' },
-  { label: 'Rome', value: 'RM' },
-  { label: 'London', value: 'LDN' },
-  { label: 'Istanbul', value: 'IST' },
-  { label: 'Paris', value: 'PRS' },
-  { label: 'Indonesia', value: 'ID' },
-];
-
-function Section1(props) {
-  const { language, setLanguage, setSection } = props;
-  const [country, setCountry] = useState('');
+function Section1() {
+  const { language, setLanguage, label } = useContext(AuthContext);
+  const { countries, form, onChange, country, setCountry, register, loadingButton } = useContext(RegisterContext);
+  const [seePassword, setSeePassowrd] = useState(false);
+  const [seePasswordConfirmation, setSeePassowrdConfirmation] = useState(false);
 
   return (
     <div className="p-10 lg:px-32 h-screen">
@@ -44,30 +39,61 @@ function Section1(props) {
       <div>
         <div>
           <div className="grid lg:grid-cols-2 lg:gap-5">
-            <FormInputComponent type="text" label="First name" required placeholder="Enter your first name" />
-            <FormInputComponent type="text" label="Last name" required placeholder="Enter your last name" />
+            <FormInputComponent name="firstname" value={form.firstname} onChange={onChange} type="text" label="First name" required placeholder="Enter your first name" />
+            <FormInputComponent name="lastname" value={form.lastname} onChange={onChange} type="text" label="Last name" required placeholder="Enter your last name" />
           </div>
           <div>
-            <FormInputComponent type="text" label="Email" placeholder="Enter your email" />
+            <FormInputComponent name="email" value={form.email} onChange={onChange} type="text" label="Email" placeholder="Enter your email" />
           </div>
           <div className="mt-5 w-full">
             <p className="font-semibold mb-2" style={{ fontSize: 15.4, color: '#666666' }}>
               Country
             </p>
-            <Dropdown className="custom_pannel" value={country} options={contries} onChange={(e) => setCountry(e.value)} placeholder="Choose your country" />
+            <Dropdown optionLabel="name" className="custom_pannel" value={country} options={countries} onChange={(e) => setCountry(e.value)} placeholder="Choose your country" />
           </div>
         </div>
       </div>
 
       <div className="mt-5 w-full">
         <div>
-          <FormInputComponent type="text" icon="/images/phone.svg" label="Whatsapp Number (with country code)" required placeholder="Phone number" />
+          <FormInputComponent
+            name="mobile"
+            value={form.mobile}
+            onChange={onChange}
+            type="text"
+            icon="/images/phone.svg"
+            label="Whatsapp Number (with country code)"
+            required
+            placeholder="Phone number"
+          />
         </div>
       </div>
       <div className="w-full">
         <div className="grid lg:grid-cols-2 lg:gap-5">
-          <FormInputComponent type="password" lastIcon="/images/eye.png" label="Password" placeholder="Enter your password" />
-          <FormInputComponent type="password" lastIcon="/images/eye.png" label="Confirm password" placeholder="Confirm your password" />
+          <FormInputComponent
+            name="password"
+            value={form.password}
+            onChange={onChange}
+            type={seePassword ? 'text' : 'password'}
+            lastIcon="/images/eye.png"
+            label="Password"
+            placeholder="Enter your password"
+            changeType={() => {
+              setSeePassowrd(!seePassword);
+            }}
+          />
+          <FormInputComponent
+            name="password_confirmation"
+            value={form.password_confirmation}
+            onChange={onChange}
+            type={seePasswordConfirmation ? 'text' : 'password'}
+            lastIcon="/images/eye.png"
+            label="Confirm password"
+            placeholder="Confirm your password"
+            changeType={() => {
+              setSeePassowrdConfirmation(!seePasswordConfirmation);
+            }}
+          />
         </div>
       </div>
       <div className="mt-8 w-full">
@@ -83,8 +109,8 @@ function Section1(props) {
         </div>
       </div>
       <div className="mt-8 w-full">
-        <button type="button" onClick={() => setSection(2)} className="bg-gray-200 rounded-md w-full p-3" style={{ height: 60 }}>
-          Create an account
+        <button type="button" onClick={register} className={`${loadingButton ? 'bg-gray-200' : 'bg-blue-500'} rounded-md w-full p-3 text-white`} style={{ height: 60 }}>
+          {!loadingButton ? 'Create an account' : label.GLOBAL.LOADING}
         </button>
       </div>
       <div className="flex w-full gap-2 justify-center mt-5">

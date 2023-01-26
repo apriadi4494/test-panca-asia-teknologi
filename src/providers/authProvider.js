@@ -1,5 +1,9 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
+import { ENGLISH, INDONESIA } from '@/commons/fixtures/label';
 import axios from 'axios';
 import localStorage from 'local-storage';
 import React, { useEffect, useState, createContext } from 'react';
@@ -10,6 +14,8 @@ export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
+  const [language, setLanguage] = useState('eng');
+  const [label, setLabel] = useState(ENGLISH);
   const [loading, setLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
   const [token, setToken] = useState('');
@@ -37,10 +43,15 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
+    const chooseLabel = language === 'eng' ? ENGLISH : INDONESIA;
+    setLabel(chooseLabel);
+  }, [language]);
+
+  useEffect(() => {
     checkIsLogin(localToken);
   }, []);
 
-  const authStates = { loading, isLogin, setIsLogin, token, checkIsLogin };
+  const authStates = { loading, isLogin, setIsLogin, token, checkIsLogin, language, setLanguage, label };
 
   return <AuthContext.Provider value={authStates}>{children}</AuthContext.Provider>;
 }
