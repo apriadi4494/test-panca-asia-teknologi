@@ -1,7 +1,20 @@
+/* eslint-disable import/order */
+/* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
+import { AuthContext } from '@/providers/authProvider';
+import Router from 'next/router';
 import Head from 'next/head';
+import { useContext, useEffect } from 'react';
 
 export default function Home() {
+  const { loading, isLogin } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!loading && !isLogin) {
+      Router.push('/login');
+    }
+  }, [loading]);
+
   return (
     <>
       <Head>
@@ -10,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main />
+      <main>{loading ? <p>Loading....</p> : <p>Welcome</p>}</main>
     </>
   );
 }
