@@ -23,7 +23,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>{loading ? <p>Loading....</p> : <p>Welcome</p>}</main>
+      <main>
+        <div className="w-full h-screen grid items-center justify-center">{loading ? <p className="font-bold text-2xl">Loading....</p> : <p className="font-bold text-2xl">Welcome</p>}</div>
+      </main>
     </>
   );
 }

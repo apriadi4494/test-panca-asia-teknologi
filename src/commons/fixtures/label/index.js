@@ -1,4 +1,7 @@
 export const ENGLISH = {
+  GLOBAL: {
+    LOADING: 'Loading...',
+  },
   LOGIN: {
     LOGIN: 'Login',
     OR: 'Or',
@@ -34,6 +37,9 @@ export const ENGLISH = {
 };
 
 export const INDONESIA = {
+  GLOBAL: {
+    LOADING: 'Loading...',
+  },
   LOGIN: {
     LOGIN: 'Login',
     OR: 'Atau',

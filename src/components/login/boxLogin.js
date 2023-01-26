@@ -1,13 +1,62 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-extraneous-dependencies */
+import axios from 'axios';
+import Router from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FormInput from './formInput';
+import Swal from 'sweetalert2';
+import { AuthContext } from '@/providers/authProvider';
 
 function BoxLogin(props) {
   const { label } = props;
+  const { checkIsLogin } = useContext(AuthContext);
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    username: '',
+    password: '',
+    mobile_code: '62',
+    type: 'password',
+  });
+
+  const onChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   const changeType = () => {
     setIsVisiblePassword(!isVisiblePassword);
+  };
+
+  const doLogin = async () => {
+    setLoading(true);
+    await axios({
+      method: 'POST',
+      url: `${process.env.NEXT_PUBLIC_API_URL}/api/login-type`,
+      data: form,
+      config: {
+        headers: {
+          Accept: 'application/json',
+        },
+      },
+    })
+      .then(async (res) => {
+        await checkIsLogin(res.data.data.access_token);
+        Router.push('/');
+      })
+      .catch((err) => {
+        if (err.response.data.message.error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: err.response.data.message.error,
+          });
+        }
+      });
+    setLoading(false);
   };
 
   return (
@@ -57,8 +106,11 @@ function BoxLogin(props) {
 
             {/* FORM */}
             <div>
-              <FormInput type="text" label={label.LOGIN.EMAIL} image="/images/mail.png" placeholder={label.LOGIN.EMAIL_PLACEHOLDER} />
+              <FormInput value={form.email} name="username" onChange={onChange} type="text" label={label.LOGIN.EMAIL} image="/images/mail.png" placeholder={label.LOGIN.EMAIL_PLACEHOLDER} />
               <FormInput
+                value={form.password}
+                name="password"
+                onChange={onChange}
                 type={isVisiblePassword ? 'text' : 'password'}
                 label={label.LOGIN.PASSWORD}
                 image="/images/keys.svg"
@@ -87,9 +139,9 @@ function BoxLogin(props) {
 
             {/* BUTTON */}
             <div className="mt-10">
-              <button type="button" className="bg-green-600 rounded-md w-full p-3">
+              <button type="button" onClick={doLogin} disabled={loading} className={`${!loading ? 'bg-green-600' : 'bg-gray-300'} rounded-md w-full p-3`}>
                 <p className="text-white" style={{ fontSize: 16.8 }}>
-                  {label.LOGIN.LOGIN}
+                  {!loading ? label.LOGIN.LOGIN : label.GLOBAL.LOADING}
                 </p>
               </button>
             </div>

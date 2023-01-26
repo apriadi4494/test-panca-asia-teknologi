@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 function FormInputComponent(props) {
-  const { type, label, image, placeholder, lastIcon, changeType } = props;
+  const { value, onChange, name, type, label, image, placeholder, lastIcon, changeType } = props;
   return (
     <div className="py-2">
       <div className="mb-3">
@@ -17,6 +17,9 @@ function FormInputComponent(props) {
         <div className="my-2" style={{ width: 2, backgroundColor: '#E8EAF2' }} />
         <div className="flex w-full px-2">
           <input
+            name={name}
+            value={value}
+            onChange={onChange}
             type={type}
             placeholder={placeholder}
             className="w-full h-full text-gray-600 placeholder-gray-400 outline-none text-sm flex-1 border-transparent focus:border-transparent focus:ring-0"
