@@ -12,17 +12,17 @@ function BoxLogin(props) {
 
   return (
     <div className="grid justify-center py-10">
-      <div className="w-fit grid grid-cols-2 rounded-sm shadow-md" style={{ backgroundColor: '#F5F6FA' }}>
+      <div className="w-fit grid md:grid-cols-2 rounded-sm shadow-md" style={{ backgroundColor: '#F5F6FA' }}>
         {/* GAMBAR */}
         <div className="grid justify-center p-5">
-          <div>
+          <div className="hidden md:block">
             <Image src="/images/login_bg.cb29655a.svg.png" width={570} height={570} />
           </div>
           <div className="flex gap-4 justify-center">
-            <div>
+            <div className="cursor-pointer duration-700 hover:scale-105">
               <Image src="/images/appstore.png" width={154} height={54} />
             </div>
-            <div>
+            <div className="cursor-pointer duration-700 hover:scale-105">
               <Image src="/images/googleplay.png" width={187} height={55} />
             </div>
           </div>
