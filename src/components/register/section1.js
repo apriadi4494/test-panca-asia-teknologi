@@ -22,7 +22,7 @@ function Section1(props) {
   const [country, setCountry] = useState('');
 
   return (
-    <div className="p-10 px-32">
+    <div className="p-10 px-32 h-screen">
       <div className="flex w-full">
         <div className="grid justify-items-end h-full">
           <p className="font-semibold" style={{ color: '#23A455', fontSize: 30.8 }}>
