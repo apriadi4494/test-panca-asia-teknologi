@@ -4,6 +4,9 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
 
 body {
     font-family: 'Lustria', serif;
@@ -20,4 +23,17 @@ body {
     --tw-placeholder-opacity: 1!important;
     color: rgb(156 163 175 / var(--tw-placeholder-opacity))!important;
     font-family: 'Lustria', serif;
+}
+
+.text-register {
+    font-family: 'Hind', sans-serif;
+}
+
+.text-list {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.text-popup-register {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
 }

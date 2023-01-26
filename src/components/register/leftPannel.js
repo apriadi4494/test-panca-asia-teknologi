@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import ListComponent from './list-component';
+import ListComponent from '../base/list-component';
 
 function LeftPannel(props) {
   const { label } = props;

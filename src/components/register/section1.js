@@ -6,7 +6,7 @@ import { Dropdown } from 'primereact/dropdown';
 import Image from 'next/image';
 import Link from 'next/link';
 import { languages } from '@/commons/fixtures/languages';
-import FormInputComponent from './formInputComponent';
+import FormInputComponent from '../base/formInputComponent';
 
 const contries = [
   { label: 'New York', value: 'NY' },
@@ -17,8 +17,8 @@ const contries = [
   { label: 'Indonesia', value: 'ID' },
 ];
 
-function RightPannel(props) {
-  const { language, setLanguage } = props;
+function Section1(props) {
+  const { language, setLanguage, setSection } = props;
   const [country, setCountry] = useState('');
 
   return (
@@ -83,7 +83,7 @@ function RightPannel(props) {
         </div>
       </div>
       <div className="mt-8 w-full">
-        <button type="button" className="bg-gray-200 rounded-md w-full p-3" style={{ height: 60 }}>
+        <button type="button" onClick={() => setSection('section2')} className="bg-gray-200 rounded-md w-full p-3" style={{ height: 60 }}>
           Create an account
         </button>
       </div>
@@ -106,4 +106,4 @@ function RightPannel(props) {
   );
 }
 
-export default React.memo(RightPannel);
+export default React.memo(Section1);

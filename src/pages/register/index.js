@@ -4,11 +4,13 @@
 import { ENGLISH, INDONESIA } from '@/commons/fixtures/label';
 import { useEffect, useState } from 'react';
 import LeftPannel from '@/components/register/leftPannel';
-import RightPannel from '@/components/register/rightPannel';
+import Section2 from '@/components/register/section2';
+import Section1 from '@/components/register/section1';
 
 function Register() {
   const [language, setLanguage] = useState('eng');
   const [label, setLabel] = useState(ENGLISH);
+  const [section, setSection] = useState('section1');
 
   useEffect(() => {
     const chooseLabel = language === 'eng' ? ENGLISH : INDONESIA;
@@ -16,10 +18,15 @@ function Register() {
   }, [language]);
 
   return (
-    <div className="grid grid-cols-2 w-full">
+    <div className="grid grid-cols-7 w-full">
       {/* LEFT PANNEL */}
-      <LeftPannel label={label} />
-      <RightPannel language={language} setLanguage={setLanguage} />
+      <div className="col-span-3">
+        <LeftPannel label={label} />
+      </div>
+      <div className="col-span-4">
+        {section === 'section1' && <Section1 language={language} setLanguage={setLanguage} setSection={setSection} />}
+        {section === 'section2' && <Section2 language={language} setLanguage={setLanguage} setSection={setSection} />}
+      </div>
     </div>
   );
 }
