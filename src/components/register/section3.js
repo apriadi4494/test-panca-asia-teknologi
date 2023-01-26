@@ -82,8 +82,8 @@ function ListPayment(props) {
 }
 function Section3() {
   return (
-    <div className="text-register px-10 mt-20" style={{ height: 680 }}>
-      <div className="grid grid-cols-5 gap-5 mt-5">
+    <div className="text-register px-10 mt-20 h-4/5 lg:h-4/6">
+      <div className="grid xl:grid-cols-5 gap-5 mt-5">
         <div className="grid col-span-3 gap-y-4">
           <div className="mb-5">
             <p>METODE PEMBAYARAN</p>

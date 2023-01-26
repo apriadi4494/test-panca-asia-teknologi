@@ -22,9 +22,9 @@ function Section1(props) {
   const [country, setCountry] = useState('');
 
   return (
-    <div className="p-10 px-32 h-screen">
+    <div className="p-10 lg:px-32 h-screen">
       <div className="flex w-full">
-        <div className="grid justify-items-end h-full">
+        <div className="mt-20 lg:mt-0 grid justify-items-end h-full">
           <p className="font-semibold" style={{ color: '#23A455', fontSize: 30.8 }}>
             Start your free trial
           </p>
@@ -43,7 +43,7 @@ function Section1(props) {
       </div>
       <div>
         <div>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid lg:grid-cols-2 lg:gap-5">
             <FormInputComponent type="text" label="First name" required placeholder="Enter your first name" />
             <FormInputComponent type="text" label="Last name" required placeholder="Enter your last name" />
           </div>
@@ -65,7 +65,7 @@ function Section1(props) {
         </div>
       </div>
       <div className="w-full">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 lg:gap-5">
           <FormInputComponent type="password" lastIcon="/images/eye.png" label="Password" placeholder="Enter your password" />
           <FormInputComponent type="password" lastIcon="/images/eye.png" label="Confirm password" placeholder="Confirm your password" />
         </div>

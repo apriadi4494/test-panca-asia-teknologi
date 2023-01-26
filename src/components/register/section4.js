@@ -5,7 +5,7 @@ import TextIcon from '../base/textIcon';
 
 function Section4() {
   return (
-    <div className="w-full mt-16 px-10">
+    <div className="w-full mt-16 md:px-10">
       <div className="grid w-full justify-center">
         <p className="text-center mb-2 font-bold" style={{ color: '#E08011', fontSize: 23 }}>
           Satu langkah lagi
@@ -15,7 +15,7 @@ function Section4() {
           Rp1.177.<span style={{ color: '#E08011' }}>560</span>
         </p>
       </div>
-      <div className="grid grid-cols-2 w-full gap-5 px-5 mt-4">
+      <div className="grid xl:grid-cols-2 w-full gap-5 px-5 mt-4">
         <div className="border border-gray-300 rounded-md">
           <div className="flex gap-5 py-3">
             <Image className="ml-5" src="/images/payment-icon/bca.svg" width={50} height={24} />

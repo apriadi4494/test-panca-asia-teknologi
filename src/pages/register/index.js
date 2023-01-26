@@ -22,12 +22,12 @@ function Register() {
   }, [language]);
 
   return (
-    <div className="grid grid-cols-7 w-full">
+    <div className="grid lg:grid-cols-7 w-full h-screen">
       {/* LEFT PANNEL */}
-      <div className="col-span-3">
+      <div className="sticky col-span-3 hidden lg:block h-full">
         <LeftPannel label={label} language={language} setLanguage={setLanguage} />
       </div>
-      <div className="col-span-4 h-screen">
+      <div className="col-span-4 h-full">
         {section !== 1 && <PopText language={language} setLanguage={setLanguage} section={section} />}
         {section === 1 && <Section1 language={language} setLanguage={setLanguage} setSection={setSection} />}
         {section === 2 && <Section2 setSection={setSection} />}
