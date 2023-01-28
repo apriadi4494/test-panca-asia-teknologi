@@ -10,6 +10,7 @@ import React, { useContext, useState } from 'react';
 import FormInput from './formInput';
 import Swal from 'sweetalert2';
 import { AuthContext } from '@/providers/authProvider';
+import '@/styles/login.module.css';
 
 function BoxLogin(props) {
   const { label } = props;
@@ -60,47 +61,68 @@ function BoxLogin(props) {
   };
 
   return (
-    <div className="grid justify-center py-10">
+    <div className="grid justify-center md:py-5 login-box">
       <div className="w-fit grid md:grid-cols-2 rounded-sm shadow-md" style={{ backgroundColor: '#F5F6FA' }}>
         {/* GAMBAR */}
-        <div className="grid justify-center p-5">
-          <div className="hidden md:block">
-            <Image src="/images/login_bg.cb29655a.svg.png" width={570} height={570} />
-          </div>
-          <div className="flex gap-4 justify-center">
-            <div className="cursor-pointer duration-700 hover:scale-105">
-              <Image src="/images/appstore.png" width={154} height={54} />
+        <div className="md:p-8">
+          <div className="grid justify-center md:p-5 border-r">
+            <div className="hidden md:block">
+              <Image src="/images/login_bg.cb29655a.svg.png" width={570} height={570} />
             </div>
-            <div className="cursor-pointer duration-700 hover:scale-105">
-              <Image src="/images/googleplay.png" width={187} height={55} />
+            <div className="hidden md:block">
+              <div className="flex gap-4 justify-center">
+                <div className="cursor-pointer duration-700 hover:scale-105">
+                  <Image src="/images/appstore.png" width={154} height={54} />
+                </div>
+                <div className="cursor-pointer duration-700 hover:scale-105">
+                  <Image src="/images/googleplay.png" width={187} height={55} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* FORM */}
-        <div>
-          <div className="p-5">
+        <div className="md:px-5">
+          <div className="p-5 md:p-9">
             <div className="mb-5">
-              <p className="font-semibold" style={{ color: '#23A455', fontSize: 30.8 }}>
+              <p className="font-normal" style={{ color: '#23A455', fontSize: 30.8, fontWeight: 550 }}>
                 {label.LOGIN.LOGIN}
               </p>
             </div>
             {/* BUTTON LOGIN SSO */}
-            <div className="flex gap-5">
-              <div className="cursor-pointer duration-500 hover:scale-105">
-                <Image src="/images/b-google.png" width={166.66} height={50} />
+            <div className="hidden md:block">
+              <div className="flex justify-between">
+                <div className="cursor-pointer duration-500 hover:scale-105">
+                  <Image src="/images/b-google.png" width={166.66} height={50} />
+                </div>
+                <div className="cursor-pointer duration-500 hover:scale-105">
+                  <Image src="/images/b-facebook.png" width={166.66} height={50} />
+                </div>
+                <div className="cursor-pointer duration-500 hover:scale-105">
+                  <Image src="/images/b-shopify.png" width={166.66} height={50} />
+                </div>
               </div>
-              <div className="cursor-pointer duration-500 hover:scale-105">
-                <Image src="/images/b-facebook.png" width={166.66} height={50} />
-              </div>
-              <div className="cursor-pointer duration-500 hover:scale-105">
-                <Image src="/images/b-shopify.png" width={166.66} height={50} />
+            </div>
+            <div className="md:hidden block">
+              <div className="flex justify-between gap-5">
+                <button className="bg-white w-full px-10 py-2grid justify-center items-center rounded-md" type="submit">
+                  <Image src="/images/google-icon.svg" width={30} height={30} />
+                </button>
+                <button className="bg-blue-600 w-full py-2 px-10 grid justify-center items-center rounded-md" type="submit">
+                  <Image src="/images/facebook-icon.svg" width={30} height={30} />
+                </button>
+                <button className="bg-lime-500 w-full py-2 px-10 grid justify-center items-center rounded-md" type="submit">
+                  <Image src="/images/shopify-icon.svg" width={30} height={30} />
+                </button>
               </div>
             </div>
             {/* DIVIDER */}
             <div className="relative flex py-5 items-center">
               <div className="flex-grow border-t border-gray-200" />
-              <span className="flex-shrink mx-4 text-gray-400">{label.LOGIN.OR}</span>
+              <span className="flex-shrink mx-4" style={{ color: '#666666', fontSize: 14 }}>
+                {label.LOGIN.OR}
+              </span>
               <div className="flex-grow border-t border-gray-200" />
             </div>
 
@@ -131,7 +153,7 @@ function BoxLogin(props) {
                 </div>
               </div>
               <div>
-                <p className="text-right" style={{ color: '#666666', fontSize: 14 }}>
+                <p className="text-right underline" style={{ color: '#666666', fontSize: 14 }}>
                   {label.LOGIN.FORGOT_PASSWORD}
                 </p>
               </div>
@@ -139,7 +161,7 @@ function BoxLogin(props) {
 
             {/* BUTTON */}
             <div className="mt-10">
-              <button type="button" onClick={doLogin} disabled={loading} className={`${!loading ? 'bg-green-600' : 'bg-gray-300'} rounded-md w-full p-3`}>
+              <button type="button" onClick={doLogin} disabled={loading} className={`${!loading ? 'bg-green-600' : 'bg-gray-300'} rounded-md w-full p-4`}>
                 <p className="text-white" style={{ fontSize: 16.8 }}>
                   {!loading ? label.LOGIN.LOGIN : label.GLOBAL.LOADING}
                 </p>
@@ -147,12 +169,23 @@ function BoxLogin(props) {
             </div>
 
             {/* QUESTION IS HAVE ACCOUNT */}
-            <div className="mt-2">
-              <div className="flex justify-center gap-2" style={{ fontSize: 15.4 }}>
+            <div className="mt-4">
+              <div className="flex justify-center gap-2 md:tracking-wider text-sm md:text-base">
                 <span>{label.LOGIN.ACCOUNT_QUESTION}</span>
                 <Link href="/register">
                   <span className="text-green-500">{label.LOGIN.PLEASE_SIGNUP}</span>
                 </Link>
+              </div>
+            </div>
+
+            <div className="block md:hidden mt-5">
+              <div className="flex gap-4 justify-center">
+                <div className="cursor-pointer duration-700 hover:scale-105">
+                  <Image src="/images/appstore.png" width={154} height={54} />
+                </div>
+                <div className="cursor-pointer duration-700 hover:scale-105">
+                  <Image src="/images/googleplay.png" width={187} height={55} />
+                </div>
               </div>
             </div>
           </div>

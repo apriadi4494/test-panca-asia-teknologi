@@ -16,7 +16,7 @@ function Login() {
   }, [language]);
 
   return (
-    <div className="p-5">
+    <div className="md:p-5">
       <BoxImage language={language} setLanguage={setLanguage} />
       <BoxLogin label={label} />
     </div>

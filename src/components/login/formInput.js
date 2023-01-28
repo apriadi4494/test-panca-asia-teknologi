@@ -4,9 +4,9 @@ import React from 'react';
 function FormInputComponent(props) {
   const { value, onChange, name, type, label, image, placeholder, lastIcon, changeType } = props;
   return (
-    <div className="py-2">
-      <div className="mb-3">
-        <p className="font-semibold" style={{ color: '#666666', fontSize: 15.4 }}>
+    <div className="py-2 tracking-wide">
+      <div className="mb-1">
+        <p className="form-label font-semibold " style={{ color: '#666666', fontSize: 16 }}>
           {label}
         </p>
       </div>
@@ -22,7 +22,7 @@ function FormInputComponent(props) {
             onChange={onChange}
             type={type}
             placeholder={placeholder}
-            className="w-full h-full text-gray-600 placeholder-gray-400 outline-none text-sm flex-1 border-transparent focus:border-transparent focus:ring-0"
+            className="w-full h-full text-gray-600 placeholder-gray-200 outline-none text-sm flex-1 border-transparent focus:border-transparent focus:ring-0"
             style={{ fontSize: 14 }}
           />
           {lastIcon && (
