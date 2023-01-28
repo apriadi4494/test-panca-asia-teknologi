@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Quicksand:wght@300&display=swap');
@@ -11,6 +11,19 @@
 /* body {
     font-family: 'Lustria', serif;
 } */
+
+.language.p-dropdown {
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: white;
+    border: none;
+    border-radius: 0%;
+}
+
+.language .p-dropdown-label {
+    color: black!important;
+    font-family: 'Lato', sans-serif;
+}
 
 .custom_pannel.p-dropdown {
     width: 100%;

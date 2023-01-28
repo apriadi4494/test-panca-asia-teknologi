@@ -2,8 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import Image from 'next/image';
-import { Dropdown } from 'primereact/dropdown';
-import { languages } from '@/commons/fixtures/languages';
+import LanguageDropdown from './languageDropdown';
 
 function PopText(props) {
   const { section, language, setLanguage } = props;
@@ -30,8 +29,8 @@ function PopText(props) {
           </div>
         </div>
       )}
-      <div className="hidden lg:block absolute right-0 pr-7" style={{ marginTop: section > 3 ? 35 : 0 }}>
-        <Dropdown value={language} options={languages} onChange={(e) => setLanguage(e.value)} placeholder="Select a City" />
+      <div className="hidden lg:block right-0 pr-7" style={{ marginTop: section > 3 ? 35 : 0 }}>
+        <LanguageDropdown language={language} setLanguage={setLanguage} />
       </div>
     </div>
   );

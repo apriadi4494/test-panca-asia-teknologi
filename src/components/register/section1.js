@@ -5,10 +5,10 @@ import React, { useContext, useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import Image from 'next/image';
 import Link from 'next/link';
-import { languages } from '@/commons/fixtures/languages';
 import FormInputComponent from '../base/formInputComponent';
 import { RegisterContext } from '@/providers/registerProvider';
 import { AuthContext } from '@/providers/authProvider';
+import LanguageDropdown from '../base/languageDropdown';
 
 function Section1() {
   const { language, setLanguage, label } = useContext(AuthContext);
@@ -24,9 +24,7 @@ function Section1() {
             Start your free trial
           </p>
         </div>
-        <div className="absolute right-0 pr-20">
-          <Dropdown value={language} options={languages} onChange={(e) => setLanguage(e.value)} placeholder="Select a City" />
-        </div>
+        <LanguageDropdown language={language} setLanguage={setLanguage} />
       </div>
       <div className="mt-5">
         <Link href="/login">
