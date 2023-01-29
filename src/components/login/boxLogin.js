@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
@@ -8,7 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 import FormInput from './formInput';
-import Swal from 'sweetalert2';
 import { AuthContext } from '@/providers/authProvider';
 import '@/styles/login.module.css';
 
@@ -24,8 +24,17 @@ function BoxLogin(props) {
     type: 'password',
   });
 
+  const [errorForm, setErrorForm] = useState({
+    username: '',
+    password: '',
+    mobile_code: '',
+    type: '',
+    response: '',
+  });
+
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrorForm({ ...errorForm, [e.target.name]: '' });
   };
 
   const changeType = () => {
@@ -33,6 +42,15 @@ function BoxLogin(props) {
   };
 
   const doLogin = async () => {
+    if (form.username === '' || form.password === '') {
+      setErrorForm({
+        ...errorForm,
+        username: form.username === '' ? 'Email address is required.' : '',
+        password: form.password === '' ? 'Password is required.' : '',
+      });
+      return true;
+    }
+
     setLoading(true);
     await axios({
       method: 'POST',
@@ -50,11 +68,9 @@ function BoxLogin(props) {
       })
       .catch((err) => {
         if (err.response.data.message.error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Login Failed',
-            text: err.response.data.message.error,
-          });
+          setErrorForm({ ...errorForm, response: err.response.data.message.error });
+        } else {
+          setErrorForm({ ...errorForm, response: 'Login failed' });
         }
       });
     setLoading(false);
@@ -128,8 +144,18 @@ function BoxLogin(props) {
 
             {/* FORM */}
             <div>
-              <FormInput value={form.email} name="username" onChange={onChange} type="text" label={label.LOGIN.EMAIL} image="/images/mail.png" placeholder={label.LOGIN.EMAIL_PLACEHOLDER} />
               <FormInput
+                errorMessage={errorForm.username}
+                value={form.email}
+                name="username"
+                onChange={onChange}
+                type="text"
+                label={label.LOGIN.EMAIL}
+                image="/images/mail.png"
+                placeholder={label.LOGIN.EMAIL_PLACEHOLDER}
+              />
+              <FormInput
+                errorMessage={errorForm.password}
                 value={form.password}
                 name="password"
                 onChange={onChange}
@@ -158,9 +184,13 @@ function BoxLogin(props) {
                 </p>
               </div>
             </div>
-
+            {errorForm.response !== '' && (
+              <div className="mt-4">
+                <p className="text-error tracking-normal">{errorForm.response}</p>
+              </div>
+            )}
             {/* BUTTON */}
-            <div className="mt-10">
+            <div className="mt-3">
               <button type="button" onClick={doLogin} disabled={loading} className={`${!loading ? 'bg-green-600' : 'bg-gray-300'} rounded-md w-full p-4`}>
                 <p className="text-white" style={{ fontSize: 16.8 }}>
                   {!loading ? label.LOGIN.LOGIN : label.GLOBAL.LOADING}

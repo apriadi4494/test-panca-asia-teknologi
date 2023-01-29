@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 function FormInputComponent(props) {
-  const { value, onChange, name, type, label, image, placeholder, lastIcon, changeType } = props;
+  const { errorMessage, value, onChange, name, type, label, image, placeholder, lastIcon, changeType } = props;
   return (
     <div className="py-2 tracking-wide">
       <div className="mb-1">
@@ -32,6 +32,11 @@ function FormInputComponent(props) {
           )}
         </div>
       </div>
+      {errorMessage && (
+        <div>
+          <p className="text-error tracking-normal">{errorMessage}</p>
+        </div>
+      )}
     </div>
   );
 }

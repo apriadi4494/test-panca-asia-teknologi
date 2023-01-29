@@ -16,7 +16,7 @@ export function RegisterProvider({ children }) {
   });
   const [countries, setContries] = useState([]);
   const [country, setCountry] = useState('');
-  const [section, setSection] = useState(2);
+  const [section, setSection] = useState(1);
   const [loadingButton, setLoadingButton] = useState(false);
   const [aggree, setAggre] = useState(false);
   const [form, setForm] = useState({
@@ -30,8 +30,21 @@ export function RegisterProvider({ children }) {
     country: '62',
   });
 
+  const [errorForm, setErrorForm] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    mobile_code: '62',
+    mobile: '',
+    password: '',
+    password_confirmation: '',
+    country: '',
+    response: '',
+  });
+
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setErrorForm({ ...errorForm, [e.target.name]: '' });
   };
 
   const getContries = async () => {
@@ -51,14 +64,20 @@ export function RegisterProvider({ children }) {
   };
 
   const register = async () => {
-    if (!aggree) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Aggreement',
-        text: 'you have to aggree with term and condition',
+    if (form.username === '' || form.password === '') {
+      setErrorForm({
+        ...errorForm,
+        firstname: form.firstname === '' ? 'Firstname is required.' : '',
+        lastname: form.lastname === '' ? 'Lastname is required.' : '',
+        email: form.email === '' ? 'Email address is required.' : '',
+        mobile: form.mobile === '' ? 'Phone number is required.' : '',
+        password: form.password === '' ? 'Password is required.' : '',
+        password_confirmation: form.password_confirmation === '' ? 'Password confirmation is required.' : '',
+        country: country === '' ? 'Country is required' : '',
       });
       return true;
     }
+
     setLoadingButton(true);
     await axios({
       method: 'post',
@@ -74,11 +93,9 @@ export function RegisterProvider({ children }) {
       })
       .catch((err) => {
         if (err.response.data.message.error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Create Failed',
-            text: err.response.data.message.error,
-          });
+          setErrorForm({ ...errorForm, response: err.response.data.message.error });
+        } else {
+          setErrorForm({ ...errorForm, response: 'Register failed' });
         }
       });
     setLoadingButton(false);
@@ -118,7 +135,7 @@ export function RegisterProvider({ children }) {
     getContries();
   }, []);
 
-  const registerState = { countries, form, onChange, country, setCountry, register, section, setSection, loadingButton, registerFinal, aggree, setAggre };
+  const registerState = { errorForm, countries, form, onChange, country, setCountry, register, section, setSection, loadingButton, registerFinal, aggree, setAggre };
 
   return <RegisterContext.Provider value={registerState}>{children}</RegisterContext.Provider>;
 }

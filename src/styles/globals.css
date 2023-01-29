@@ -72,3 +72,11 @@
 .source-sans-pro {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+.text-error {
+    max-width: 100%;
+    color: rgb(255, 14, 14);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 3px 0px 0px;
+}

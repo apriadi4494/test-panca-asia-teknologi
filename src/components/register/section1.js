@@ -11,7 +11,7 @@ import { AuthContext } from '@/providers/authProvider';
 
 function Section1() {
   const { label } = useContext(AuthContext);
-  const { countries, form, onChange, country, setCountry, register, loadingButton, aggree, setAggre } = useContext(RegisterContext);
+  const { countries, form, onChange, country, setCountry, register, loadingButton, aggree, setAggre, errorForm } = useContext(RegisterContext);
   const [seePassword, setSeePassowrd] = useState(false);
   const [seePasswordConfirmation, setSeePassowrdConfirmation] = useState(false);
 
@@ -36,17 +36,31 @@ function Section1() {
       <div>
         <div>
           <div className="grid lg:grid-cols-2 lg:gap-5">
-            <FormInputComponent name="firstname" value={form.firstname} onChange={onChange} type="text" label="First name" required placeholder="Enter your first name" />
-            <FormInputComponent name="lastname" value={form.lastname} onChange={onChange} type="text" label="Last name" required placeholder="Enter your last name" />
+            <FormInputComponent
+              errorMessage={errorForm.firstname}
+              name="firstname"
+              value={form.firstname}
+              onChange={onChange}
+              type="text"
+              label="First name"
+              required
+              placeholder="Enter your first name"
+            />
+            <FormInputComponent errorMessage={errorForm.lastname} name="lastname" value={form.lastname} onChange={onChange} type="text" label="Last name" required placeholder="Enter your last name" />
           </div>
           <div>
-            <FormInputComponent name="email" value={form.email} onChange={onChange} type="text" label="Email" placeholder="Enter your email" />
+            <FormInputComponent errorMessage={errorForm.email} name="email" value={form.email} onChange={onChange} type="text" label="Email" placeholder="Enter your email" />
           </div>
           <div className="mt-5 w-full">
             <p className="font-semibold mb-2" style={{ fontSize: 15.4, color: '#666666' }}>
               Country
             </p>
             <Dropdown optionLabel="name" className="custom_pannel" value={country} options={countries} onChange={(e) => setCountry(e.value)} placeholder="Choose your country" />
+            {errorForm.country !== '' && (
+              <div className="mt-1">
+                <p className="text-error tracking-normal">{errorForm.country}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -54,6 +68,7 @@ function Section1() {
       <div className="mt-5 w-full">
         <div>
           <FormInputComponent
+            errorMessage={errorForm.mobile}
             name="mobile"
             value={form.mobile}
             onChange={onChange}
@@ -69,6 +84,7 @@ function Section1() {
         <div className="grid lg:grid-cols-2 lg:gap-5">
           <FormInputComponent
             name="password"
+            errorMessage={errorForm.password}
             value={form.password}
             onChange={onChange}
             type={seePassword ? 'text' : 'password'}
@@ -81,6 +97,7 @@ function Section1() {
           />
           <FormInputComponent
             name="password_confirmation"
+            errorMessage={errorForm.password_confirmation}
             value={form.password_confirmation}
             onChange={onChange}
             type={seePasswordConfirmation ? 'text' : 'password'}
@@ -105,8 +122,13 @@ function Section1() {
           </div>
         </div>
       </div>
-      <div className="mt-8 w-full">
-        <button type="button" onClick={register} className={`${loadingButton ? 'bg-gray-200' : 'bg-blue-500'} rounded-md w-full p-3 text-white`} style={{ height: 60 }}>
+      {errorForm.response === '' && (
+        <div className="mt-2">
+          <p className="text-error tracking-normal">{errorForm.response}</p>
+        </div>
+      )}
+      <div className="mt-2 w-full">
+        <button disabled={!aggree} type="button" onClick={register} className={`${loadingButton || !aggree ? 'bg-gray-200' : 'bg-blue-500'} rounded-md w-full p-3 text-white`} style={{ height: 60 }}>
           {!loadingButton ? 'Create an account' : label.GLOBAL.LOADING}
         </button>
       </div>

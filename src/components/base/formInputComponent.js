@@ -3,7 +3,7 @@ import React from 'react';
 
 // eslint-disable-next-line react/function-component-definition
 const FormInputComponent = (props) => {
-  const { value, onChange, name, type, label, placeholder, required = false, icon, lastIcon, changeType } = props;
+  const { errorMessage, value, onChange, name, type, label, placeholder, required = false, icon, lastIcon, changeType } = props;
   return (
     <div className="w-full mt-5">
       <p className="font-semibold" style={{ fontSize: 15.4, color: '#666666' }}>
@@ -31,6 +31,11 @@ const FormInputComponent = (props) => {
           )}
         </div>
       </div>
+      {errorMessage && (
+        <div>
+          <p className="text-error tracking-normal">{errorMessage}</p>
+        </div>
+      )}
     </div>
   );
 };
