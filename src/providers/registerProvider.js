@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
@@ -64,7 +65,7 @@ export function RegisterProvider({ children }) {
   };
 
   const register = async () => {
-    if (form.username === '' || form.password === '') {
+    if (form.firstname === '' || form.lastname === '' || form.email === '' || form.mobile === '' || form.password === '' || form.password_confirmation === '' || form.country === '') {
       setErrorForm({
         ...errorForm,
         firstname: form.firstname === '' ? 'Firstname is required.' : '',
@@ -72,7 +73,8 @@ export function RegisterProvider({ children }) {
         email: form.email === '' ? 'Email address is required.' : '',
         mobile: form.mobile === '' ? 'Phone number is required.' : '',
         password: form.password === '' ? 'Password is required.' : '',
-        password_confirmation: form.password_confirmation === '' ? 'Password confirmation is required.' : '',
+        password_confirmation:
+          form.password_confirmation === '' ? 'Password confirmation is required.' : form.password_confirmation !== form.password ? 'Password confirmation is not same with password' : '',
         country: country === '' ? 'Country is required' : '',
       });
       return true;
@@ -93,7 +95,7 @@ export function RegisterProvider({ children }) {
       })
       .catch((err) => {
         if (err.response.data.message.error) {
-          setErrorForm({ ...errorForm, response: err.response.data.message.error });
+          setErrorForm({ ...errorForm, response: JSON.stringify(err.response.data.message.error) });
         } else {
           setErrorForm({ ...errorForm, response: 'Register failed' });
         }

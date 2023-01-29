@@ -122,7 +122,7 @@ function Section1() {
           </div>
         </div>
       </div>
-      {errorForm.response === '' && (
+      {errorForm.response !== '' && (
         <div className="mt-2">
           <p className="text-error tracking-normal">{errorForm.response}</p>
         </div>
