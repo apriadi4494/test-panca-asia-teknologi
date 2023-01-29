@@ -5,7 +5,7 @@ import TextIcon from '../base/textIcon';
 
 function Section4() {
   return (
-    <div className="w-full mt-16 md:px-10">
+    <div className="w-full mt-32 md:mt-16 md:px-10 sans-pro">
       <div className="grid w-full justify-center">
         <p className="text-center mb-2 font-bold" style={{ color: '#E08011', fontSize: 23 }}>
           Satu langkah lagi

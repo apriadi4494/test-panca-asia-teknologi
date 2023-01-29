@@ -8,23 +8,22 @@ import Link from 'next/link';
 import FormInputComponent from '../base/formInputComponent';
 import { RegisterContext } from '@/providers/registerProvider';
 import { AuthContext } from '@/providers/authProvider';
-import LanguageDropdown from '../base/languageDropdown';
 
 function Section1() {
-  const { language, setLanguage, label } = useContext(AuthContext);
+  const { label } = useContext(AuthContext);
   const { countries, form, onChange, country, setCountry, register, loadingButton, aggree, setAggre } = useContext(RegisterContext);
   const [seePassword, setSeePassowrd] = useState(false);
   const [seePasswordConfirmation, setSeePassowrdConfirmation] = useState(false);
 
   return (
-    <div className="p-10 lg:px-32 h-screen">
+    <div className="grid md:py-20 lg:px-40 h-full justify-center">
       <div className="flex w-full">
         <div className="mt-20 lg:mt-0 grid justify-items-end h-full">
           <p className="font-semibold" style={{ color: '#23A455', fontSize: 30.8 }}>
             Start your free trial
           </p>
         </div>
-        <LanguageDropdown language={language} setLanguage={setLanguage} />
+        {/* <LanguageDropdown language={language} setLanguage={setLanguage} /> */}
       </div>
       <div className="mt-5">
         <Link href="/login">

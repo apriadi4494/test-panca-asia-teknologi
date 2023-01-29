@@ -6,7 +6,7 @@ import CardPromotion from '../base/cardPromotion';
 function Section2() {
   const [choose, setChoose] = useState(1);
   return (
-    <div className="mt-16 lg:mt-0 text-register px-10">
+    <div className=" mt-24 md:mt-16 lg:mt-0 text-register px-10 ml-0 md:-ml-44">
       <div className="sm:flex gap-5 mt-5">
         <CardPromotion index={1} setChoose={setChoose} isComplete={choose === 1} borderColor="border-blue-600" bgColor="bg-blue-600" textColor="text-blue-600" />
         <CardPromotion index={2} setChoose={setChoose} isComplete={choose === 2} borderColor="border-red-400" bgColor="bg-red-400" textColor="text-red-400" />

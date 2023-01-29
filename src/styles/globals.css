@@ -7,10 +7,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Quicksand:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 /* body {
     font-family: 'Lustria', serif;
 } */
+
+.text-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.text-popins {
+    font-family: 'Poppins', sans-serif;
+}
 
 .language.p-dropdown {
     width: 100%;
@@ -53,4 +62,13 @@
 
 .detail-payment .p-dropdown-label {
     font-size: 13px;
+}
+
+.sans-pro {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+}
+
+.source-sans-pro {
+    font-family: 'Source Sans Pro', sans-serif;
 }

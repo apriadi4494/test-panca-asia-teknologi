@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
@@ -8,7 +9,7 @@ function PopText(props) {
   const { section, language, setLanguage } = props;
   return (
     <div>
-      {section < 4 && (
+      {section !== 1 && section < 4 && (
         <div className="grid justify-center text-popup-register">
           <div className="flex rounded-b-md shadow-md py-2 px-5">
             <div className="rounded-full grid justify-center" style={{ width: 28, heigt: 28, backgroundColor: '#FBB32D' }}>
@@ -29,7 +30,7 @@ function PopText(props) {
           </div>
         </div>
       )}
-      <div className="hidden lg:block right-0 pr-7" style={{ marginTop: section > 3 ? 35 : 0 }}>
+      <div className={`right-0 pr-7 ${section > 3 ? 'mt-9' : section === 1 ? ' mt-9' : section === 2 ? 'mt-5 md:mt-0' : 'mt-0'}`}>
         <LanguageDropdown language={language} setLanguage={setLanguage} />
       </div>
     </div>

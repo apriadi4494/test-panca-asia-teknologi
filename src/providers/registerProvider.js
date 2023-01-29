@@ -16,7 +16,7 @@ export function RegisterProvider({ children }) {
   });
   const [countries, setContries] = useState([]);
   const [country, setCountry] = useState('');
-  const [section, setSection] = useState(4);
+  const [section, setSection] = useState(2);
   const [loadingButton, setLoadingButton] = useState(false);
   const [aggree, setAggre] = useState(false);
   const [form, setForm] = useState({

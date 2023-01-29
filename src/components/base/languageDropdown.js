@@ -7,7 +7,7 @@ import Image from 'next/image';
 function LanguageDropdown(props) {
   const { language, setLanguage } = props;
   return (
-    <div className="absolute flex right-0 pr-20">
+    <div className="absolute flex right-0 pr-10 md:pr-20">
       {/* <Dropdown className="language" value={language} options={languages} onChange={(e) => setLanguage(e.value)} placeholder="Select a City" /> */}
       <Menu as="div" className="relative inline-block text-left">
         <div>

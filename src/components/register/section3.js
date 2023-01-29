@@ -72,7 +72,7 @@ function ListPayment(props) {
     <div className="grid grid-cols-2 border border-gray-300 rounded-md">
       <div className="flex w-full p-4">
         <Image className="mr-5 ml-1" src={icon} width={width} height={height} />
-        <p>{label}</p>
+        <p className="source-sans-pro font-semibold">{label}</p>
       </div>
       <div className="grid items-center mr-5">
         <Image className="mr-5 ml-1" src={images} width={widthList} height={heightList} />
@@ -82,11 +82,11 @@ function ListPayment(props) {
 }
 function Section3() {
   return (
-    <div className="text-register px-10 mt-20 h-4/5 lg:h-4/6">
-      <div className="grid xl:grid-cols-5 gap-5 mt-5">
-        <div className="grid col-span-3 gap-y-4">
+    <div className="text-register px-10 mt-20 h-4/5 lg:h-4/6 ">
+      <div className="grid xl:grid-cols-9 gap-5 mt-5">
+        <div className="grid col-span-5 gap-y-4">
           <div className="mb-5">
-            <p>METODE PEMBAYARAN</p>
+            <p className="source-sans-pro font-semibold text-gray-400">PLIHI METODE PEMBAYARAN</p>
           </div>
           {payments.map((payment) => (
             <ListPayment
@@ -101,14 +101,14 @@ function Section3() {
             />
           ))}
         </div>
-        <div className="col-span-2 w-full px-5">
+        <div className="col-span-4 w-full px-5 border-l">
           <div>
             <p>ORDER SUMMARY</p>
           </div>
           <div className="bg-cyan-50 border-2 rounded-md w-full p-3 mt-5" style={{ backgroundColor: '#FBFBFD' }}>
             <div className="grid grid-cols-2 mb-5">
               <div>
-                <p className="font-bold" style={{ fontSize: 15 }}>
+                <p className="font-bold" style={{ fontSize: 14.5 }}>
                   Blazing Premium
                 </p>
                 <p className="text-gray-400" style={{ fontSize: 13 }}>
@@ -121,7 +121,7 @@ function Section3() {
             </div>
             <div className="grid grid-cols-2 mb-5">
               <div>
-                <p className="font-bold" style={{ fontSize: 15 }}>
+                <p className="font-bold" style={{ fontSize: 14.5 }}>
                   50,000 Contacts
                 </p>
                 <p className="text-gray-400" style={{ fontSize: 13 }}>
@@ -134,7 +134,7 @@ function Section3() {
             </div>
             <div className="grid grid-cols-2 mb-5">
               <div>
-                <p className="font-bold" style={{ fontSize: 15 }}>
+                <p className="font-bold" style={{ fontSize: 14.5 }}>
                   6 WhatsApp Numbers
                 </p>
                 <p className="text-gray-400" style={{ fontSize: 13 }}>
@@ -147,7 +147,7 @@ function Section3() {
             </div>
             <div className="grid grid-cols-2 mt-5 mb-5">
               <div>
-                <p className="font-bold" style={{ fontSize: 15 }}>
+                <p className="font-bold" style={{ fontSize: 14.5 }}>
                   Sub Total
                 </p>
               </div>
@@ -157,7 +157,7 @@ function Section3() {
             </div>
             <div className="grid grid-cols-2 mt-5 mb-5">
               <div>
-                <p className="font-bold text-green-600" style={{ fontSize: 15 }}>
+                <p className="font-bold text-green-600" style={{ fontSize: 14.5 }}>
                   Diskon (60%)
                 </p>
               </div>
@@ -167,7 +167,7 @@ function Section3() {
             </div>
             <div className="grid grid-cols-2 mt-10 mb-5">
               <div>
-                <p className="font-bold" style={{ fontSize: 15 }}>
+                <p className="font-bold" style={{ fontSize: 14.5 }}>
                   Grand Total
                 </p>
               </div>

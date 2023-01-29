@@ -16,13 +16,13 @@ export function RegisterContent() {
   const { section, setSection, registerFinal } = useContext(RegisterContext);
 
   return (
-    <div className="grid lg:grid-cols-7 w-full h-screen">
+    <div className="grid lg:grid-cols-2 w-full h-screen">
       {/* LEFT PANNEL */}
-      <div className="sticky col-span-3 hidden lg:block h-full">
+      <div className="hidden md:block w-f h-full">
         <LeftPannel label={label} language={language} setLanguage={setLanguage} />
       </div>
-      <div className="col-span-4 h-full">
-        {section !== 1 && <PopText language={language} setLanguage={setLanguage} section={section} />}
+      <div className="h-full w-f">
+        <PopText language={language} setLanguage={setLanguage} section={section} />
         {section === 1 && <Section1 language={language} setLanguage={setLanguage} setSection={setSection} />}
         {section === 2 && <Section2 setSection={setSection} />}
         {section === 3 && <Section3 setSection={setSection} />}
